@@ -1,0 +1,29 @@
+{
+  "name": "@velorate/core",
+  "version": "0.0.0",
+  "description": "Core engine of Velorate.",
+  "license": "MIT",
+  "type": "module",
+
+  "main": "./dist/index.js",
+
+  "types": "./dist/index.d.ts",
+
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+
+  "files": [
+    "dist"
+  ],
+
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "dev": "tsup src/index.ts --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest"
+  }
+}

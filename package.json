@@ -5,9 +5,7 @@
   "description": "Fast, flexible and production-ready rate limiting for modern applications.",
   "license": "MIT",
   "type": "module",
-
   "packageManager": "pnpm@11.10.0",
-
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -16,16 +14,11 @@
     "clean": "turbo run clean",
     "typecheck": "turbo run typecheck"
   },
-
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "^11.10.0",
-      "onFail": "download"
-    }
-  },
-
   "devDependencies": {
-    "turbo": "^2.10.4"
+    "@types/node": "^26.1.1",
+    "tsup": "^8.5.1",
+    "turbo": "^2.10.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
   }
 }
