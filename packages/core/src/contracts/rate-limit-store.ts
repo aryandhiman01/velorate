@@ -1,12 +1,4 @@
-// Represent the current state of a rate-limited identifier
-export interface RateLimitState {
-
-    // Number of requests made in the current window.
-    count: number;
-
-    // Unix timestamp (in milliseconds) when the current window resets.
-    resetAt: number;
-}
+import type { RateLimitState } from "../types/rate-limit-state.js";
 
 // Storage Contract
 export interface RateLimitStore {

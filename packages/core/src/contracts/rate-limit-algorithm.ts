@@ -1,4 +1,4 @@
-import type { RateLimitState } from "./rate-limit-store.js";
+import type { RateLimitState } from "../types/rate-limit-state.js";
 
 // A rate limiting algo
 export interface RateLimitDecision {
