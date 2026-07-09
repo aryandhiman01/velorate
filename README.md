@@ -1,8 +1,5 @@
-node_modules
-dist
-coverage
-.turbo
-.env
-.DS_Store
-.vscode/settings.json
-*.log
+# ⚡ Velorate
+
+> Fast, Flexible & Production-Ready Rate Limiting for Modern Applications.
+
+Currently under development.
