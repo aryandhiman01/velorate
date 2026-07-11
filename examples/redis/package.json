@@ -1,0 +1,12 @@
+{
+    "name": "@velorate/example-redis",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "tsx index.ts"
+    },
+    "dependencies": {
+        "@velorate/core": "workspace:*",
+        "ioredis": "^5.7.0"
+    }
+}

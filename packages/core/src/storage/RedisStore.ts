@@ -2,18 +2,38 @@ import type { Redis } from "ioredis";
 
 import type { RateLimitStore } from "../contracts/rate-limit-store.js";
 import type { RateLimitState } from "../types/rate-limit-state.js";
+import type { RedisStoreOptions } from "../types/redis-store-options.js";
 
 export class RedisStore implements RateLimitStore {
 
-    constructor(
-        private readonly client: Redis
-    ) {}
+    private readonly client: Redis;
+
+    private readonly prefix: string;
+
+    constructor(options: RedisStoreOptions) {
+
+        this.client = options.client;
+
+        this.prefix = options.prefix ?? "velorate";
+
+    }
+
+    
+    // Builds the Redis key with the configured prefix.
+     
+    private buildKey(key: string): string {
+
+        return `${this.prefix}:${key}`;
+
+    }
 
     async get(
         key: string
     ): Promise<RateLimitState | null> {
 
-        const value = await this.client.get(key);
+        const value = await this.client.get(
+            this.buildKey(key)
+        );
 
         if (!value) {
             return null;
@@ -34,7 +54,7 @@ export class RedisStore implements RateLimitStore {
         );
 
         await this.client.set(
-            key,
+            this.buildKey(key),
             JSON.stringify(value),
             "EX",
             ttl
@@ -46,13 +66,35 @@ export class RedisStore implements RateLimitStore {
         key: string
     ): Promise<void> {
 
-        await this.client.del(key);
+        await this.client.del(
+            this.buildKey(key)
+        );
 
     }
 
     async clear(): Promise<void> {
 
-        await this.client.flushdb();
+        let cursor = "0";
+
+        do {
+
+            const [nextCursor, keys] = await this.client.scan(
+                cursor,
+                "MATCH",
+                `${this.prefix}:*`,
+                "COUNT",
+                100
+            );
+
+            cursor = nextCursor;
+
+            if (keys.length > 0) {
+
+                await this.client.del(...keys);
+
+            }
+
+        } while (cursor !== "0");
 
     }
 
