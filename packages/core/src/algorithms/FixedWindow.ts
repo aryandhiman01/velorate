@@ -1,4 +1,5 @@
 import type { RateLimitAlgorithm } from "../contracts/rate-limit-algorithm.js";
+import { InvalidConfigurationError } from "../errors/InvalidConfigurationError.js";
 import type { RateLimitConfig } from "../types/rate-limit-config.js";
 import type { RateLimitDecision } from "../types/rate-limit-decision.js";
 import type { RateLimitState } from "../types/rate-limit-state.js";
@@ -10,15 +11,19 @@ export class FixedWindow implements RateLimitAlgorithm {
     ) {
 
         if (config.limit <= 0) {
-            throw new Error("Rate limit must be greater than 0.");
+            throw new InvalidConfigurationError(
+                "Rate limit must be greater than 0."
+            );
         }
 
         if (config.window <= 0) {
-            throw new Error("Window duration must be greater than 0.");
+            throw new InvalidConfigurationError(
+                "Window duration must be greater than 0."
+            );
         }
 
     }
-
+    
     execute(
         state: RateLimitState | null
     ): RateLimitDecision {

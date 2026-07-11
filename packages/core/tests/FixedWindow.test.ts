@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { FixedWindow } from "../src/algorithms/FixedWindow.js";
+import { InvalidConfigurationError } from "../src/errors/InvalidConfigurationError.js";
 
 describe("FixedWindow", () => {
 
@@ -99,26 +100,22 @@ describe("FixedWindow", () => {
     it("should reject invalid limit", () => {
 
         expect(() => {
-
             new FixedWindow({
                 limit: 0,
                 window: 10000
             });
-
-        }).toThrow("Rate limit must be greater than 0.");
+        }).toThrow(InvalidConfigurationError);
 
     });
 
     it("should reject invalid window", () => {
 
         expect(() => {
-
             new FixedWindow({
                 limit: 5,
                 window: 0
             });
-
-        }).toThrow("Window duration must be greater than 0.");
+        }).toThrow(InvalidConfigurationError);
 
     });
 
