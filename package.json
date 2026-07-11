@@ -6,16 +6,23 @@
   "license": "MIT",
   "type": "module",
   "packageManager": "pnpm@11.10.0",
+
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+
+    "test": "vitest",
+    "test:run": "vitest run",
+    "coverage": "vitest run --coverage",
+
     "lint": "turbo run lint",
-    "test": "turbo run test",
     "clean": "turbo run clean",
     "typecheck": "turbo run typecheck"
   },
+
   "devDependencies": {
     "@types/node": "^26.1.1",
+    "@vitest/coverage-v8": "^4.1.10",
     "tsup": "^8.5.1",
     "tsx": "^4.23.0",
     "turbo": "^2.10.4",
