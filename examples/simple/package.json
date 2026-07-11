@@ -1,0 +1,8 @@
+{
+  "name": "simple-example",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx index.ts"
+  }
+}
