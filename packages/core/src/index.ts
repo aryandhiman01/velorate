@@ -14,3 +14,7 @@ export * from "./core/RateLimiter.js";
 export * from "./errors/VelorateError.js";
 export * from "./errors/InvalidConfigurationError.js";
 export * from "./errors/RateLimitExceededError.js";
+
+export * from "./storage/RedisStore.js";
+
+export * from "./redis/index.js";
