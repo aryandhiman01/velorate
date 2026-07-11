@@ -8,3 +8,5 @@ export * from "./types/rate-limit-decision.js";
 export * from "./storage/MemoryStore.js";
 
 export * from "./algorithms/FixedWindow.js";
+
+export * from "./core/RateLimiter.js";
