@@ -15,12 +15,14 @@ describe("RateLimiter", () => {
             new MemoryStore(),
 
             new FixedWindow({
-
                 limit: 5,
-
                 window: 10000
+            }),
 
-            })
+            {
+                limit: 5,
+                window: 10000
+            }
 
         );
 
@@ -77,9 +79,7 @@ describe("RateLimiter", () => {
         const allowed = await limiter.check("user-2");
 
         expect(blocked.allowed).toBe(false);
-
         expect(allowed.allowed).toBe(true);
-
         expect(allowed.remaining).toBe(4);
 
     });

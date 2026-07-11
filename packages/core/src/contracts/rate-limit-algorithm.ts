@@ -1,10 +1,10 @@
+import type { RateLimitContext } from "../types/rate-limit-context.js";
 import type { RateLimitDecision } from "../types/rate-limit-decision.js";
-import type { RateLimitState } from "../types/rate-limit-state.js";
 
 export interface RateLimitAlgorithm {
 
     execute(
-        state: RateLimitState | null
+        context: RateLimitContext
     ): RateLimitDecision;
 
 }

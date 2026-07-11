@@ -17,22 +17,22 @@ async function main() {
         client: redis
     });
 
+    const config = {
+        limit: 5,
+        window: 10_000
+    };
+
     const limiter = new RateLimiter(
         store,
-        new FixedWindow({
-            limit: 5,
-            window: 10_000
-        })
+        new FixedWindow(config),
+        config
     );
 
     for (let i = 1; i <= 7; i++) {
 
         const result = await limiter.check("aryan");
 
-        console.log(
-            `Request ${i}`,
-            result
-        );
+        console.log(`Request ${i}:`, result);
 
     }
 

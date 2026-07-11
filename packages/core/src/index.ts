@@ -18,3 +18,5 @@ export * from "./errors/RateLimitExceededError.js";
 export * from "./storage/RedisStore.js";
 
 export * from "./redis/index.js";
+
+export * from "./algorithms/SlidingWindow.js";

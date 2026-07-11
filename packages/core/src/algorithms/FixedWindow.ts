@@ -1,8 +1,10 @@
 import type { RateLimitAlgorithm } from "../contracts/rate-limit-algorithm.js";
+
 import { InvalidConfigurationError } from "../errors/InvalidConfigurationError.js";
+
 import type { RateLimitConfig } from "../types/rate-limit-config.js";
+import type { RateLimitContext } from "../types/rate-limit-context.js";
 import type { RateLimitDecision } from "../types/rate-limit-decision.js";
-import type { RateLimitState } from "../types/rate-limit-state.js";
 
 export class FixedWindow implements RateLimitAlgorithm {
 
@@ -23,23 +25,23 @@ export class FixedWindow implements RateLimitAlgorithm {
         }
 
     }
-    
+
     execute(
-        state: RateLimitState | null
+        context: RateLimitContext
     ): RateLimitDecision {
 
-        const now = Date.now();
+        const { state, config, now } = context;
 
         // First request
         if (!state) {
 
             return {
                 allowed: true,
-                remaining: this.config.limit - 1,
+                remaining: config.limit - 1,
                 retryAfter: 0,
                 state: {
                     count: 1,
-                    resetAt: now + this.config.window
+                    resetAt: now + config.window
                 }
             };
 
@@ -50,18 +52,18 @@ export class FixedWindow implements RateLimitAlgorithm {
 
             return {
                 allowed: true,
-                remaining: this.config.limit - 1,
+                remaining: config.limit - 1,
                 retryAfter: 0,
                 state: {
                     count: 1,
-                    resetAt: now + this.config.window
+                    resetAt: now + config.window
                 }
             };
 
         }
 
         // Limit exceeded
-        if (state.count >= this.config.limit) {
+        if (state.count >= config.limit) {
 
             return {
                 allowed: false,
@@ -77,7 +79,7 @@ export class FixedWindow implements RateLimitAlgorithm {
 
             allowed: true,
 
-            remaining: this.config.limit - state.count - 1,
+            remaining: config.limit - state.count - 1,
 
             retryAfter: 0,
 

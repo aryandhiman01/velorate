@@ -12,7 +12,14 @@ describe("FixedWindow", () => {
             window: 10000
         });
 
-        const result = algorithm.execute(null);
+        const result = algorithm.execute({
+            state: null,
+            config: {
+                limit: 5,
+                window: 10000
+            },
+            now: Date.now()
+        });
 
         expect(result.allowed).toBe(true);
         expect(result.remaining).toBe(4);
@@ -29,8 +36,15 @@ describe("FixedWindow", () => {
         });
 
         const result = algorithm.execute({
-            count: 2,
-            resetAt: Date.now() + 10000
+            state: {
+                count: 2,
+                resetAt: Date.now() + 10000
+            },
+            config: {
+                limit: 5,
+                window: 10000
+            },
+            now: Date.now()
         });
 
         expect(result.allowed).toBe(true);
@@ -51,7 +65,14 @@ describe("FixedWindow", () => {
             resetAt: Date.now() + 10000
         };
 
-        const result = algorithm.execute(state);
+        const result = algorithm.execute({
+            state,
+            config: {
+                limit: 5,
+                window: 10000
+            },
+            now: Date.now()
+        });
 
         expect(result.allowed).toBe(false);
         expect(result.remaining).toBe(0);
@@ -68,8 +89,15 @@ describe("FixedWindow", () => {
         });
 
         const result = algorithm.execute({
-            count: 5,
-            resetAt: Date.now() - 1000
+            state: {
+                count: 5,
+                resetAt: Date.now() - 1000
+            },
+            config: {
+                limit: 5,
+                window: 10000
+            },
+            now: Date.now()
         });
 
         expect(result.allowed).toBe(true);
@@ -87,8 +115,15 @@ describe("FixedWindow", () => {
         });
 
         const result = algorithm.execute({
-            count: 7,
-            resetAt: Date.now() + 10000
+            state: {
+                count: 7,
+                resetAt: Date.now() + 10000
+            },
+            config: {
+                limit: 10,
+                window: 10000
+            },
+            now: Date.now()
         });
 
         expect(result.allowed).toBe(true);
@@ -100,10 +135,12 @@ describe("FixedWindow", () => {
     it("should reject invalid limit", () => {
 
         expect(() => {
+
             new FixedWindow({
                 limit: 0,
                 window: 10000
             });
+
         }).toThrow(InvalidConfigurationError);
 
     });
@@ -111,10 +148,12 @@ describe("FixedWindow", () => {
     it("should reject invalid window", () => {
 
         expect(() => {
+
             new FixedWindow({
                 limit: 5,
                 window: 0
             });
+
         }).toThrow(InvalidConfigurationError);
 
     });
