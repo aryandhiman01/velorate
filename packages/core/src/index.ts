@@ -20,3 +20,5 @@ export * from "./storage/RedisStore.js";
 export * from "./redis/index.js";
 
 export * from "./algorithms/SlidingWindow.js";
+
+export { SlidingWindow } from "./algorithms/SlidingWindow.js";

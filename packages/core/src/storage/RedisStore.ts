@@ -13,14 +13,10 @@ export class RedisStore implements RateLimitStore {
     constructor(options: RedisStoreOptions) {
 
         this.client = options.client;
-
         this.prefix = options.prefix ?? "velorate";
 
     }
 
-    
-    // Builds the Redis key with the configured prefix.
-     
     private buildKey(key: string): string {
 
         return `${this.prefix}:${key}`;
@@ -48,16 +44,31 @@ export class RedisStore implements RateLimitStore {
         value: RateLimitState
     ): Promise<void> {
 
-        const ttl = Math.max(
-            1,
-            Math.ceil((value.resetAt - Date.now()) / 1000)
-        );
+        let ttl = 60;
+
+        if (
+            typeof value.resetAt === "number"
+        ) {
+
+            ttl = Math.max(
+                1,
+                Math.ceil(
+                    (value.resetAt - Date.now()) / 1000
+                )
+            );
+
+        }
 
         await this.client.set(
+
             this.buildKey(key),
+
             JSON.stringify(value),
+
             "EX",
+
             ttl
+
         );
 
     }
@@ -78,13 +89,14 @@ export class RedisStore implements RateLimitStore {
 
         do {
 
-            const [nextCursor, keys] = await this.client.scan(
-                cursor,
-                "MATCH",
-                `${this.prefix}:*`,
-                "COUNT",
-                100
-            );
+            const [nextCursor, keys] =
+                await this.client.scan(
+                    cursor,
+                    "MATCH",
+                    `${this.prefix}:*`,
+                    "COUNT",
+                    100
+                );
 
             cursor = nextCursor;
 
