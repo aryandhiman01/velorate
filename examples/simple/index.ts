@@ -13,8 +13,7 @@ async function main() {
 
     const limiter = new RateLimiter(
         new MemoryStore(),
-        new FixedWindow(config),
-        config
+        new FixedWindow(config)
     );
 
     for (let i = 1; i <= 7; i++) {

@@ -17,12 +17,7 @@ describe("RateLimiter", () => {
             new FixedWindow({
                 limit: 5,
                 window: 10000
-            }),
-
-            {
-                limit: 5,
-                window: 10000
-            }
+            })
 
         );
 
