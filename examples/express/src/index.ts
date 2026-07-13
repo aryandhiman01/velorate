@@ -21,7 +21,7 @@ app.use(
 
             limit: 5,
 
-            window: 10000
+            window: 10_000
 
         })
 
@@ -29,11 +29,11 @@ app.use(
 
 );
 
-app.get("/", (_, res) => {
+app.get("/", (_req, res) => {
 
     res.json({
 
-        message: "Velorate is working 🚀"
+        message: "Hello from Velorate 🚀"
 
     });
 
@@ -43,7 +43,7 @@ app.listen(3000, () => {
 
     console.log(
 
-        "Server running at http://localhost:3000"
+        "🚀 Example server running at http://localhost:3000"
 
     );
 

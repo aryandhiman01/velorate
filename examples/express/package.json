@@ -1,5 +1,5 @@
 {
-    "name": "@velorate/example-express",
+    "name": "velorate-express-example",
     "private": true,
     "type": "module",
 
