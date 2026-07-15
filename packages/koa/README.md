@@ -1,10 +1,10 @@
-# @velorate/fastify
+# @velorate/koa
 
-Official **Fastify adapter** for **Velorate**, a fast, flexible, and production-ready rate limiting library.
+Official **Koa adapter** for **Velorate**, a fast, flexible, and production-ready rate limiting library.
 
 ## Features
 
-- Native Fastify plugin
+- Native Koa middleware
 - Fixed Window
 - Sliding Window
 - Token Bucket
@@ -21,15 +21,15 @@ Official **Fastify adapter** for **Velorate**, a fast, flexible, and production-
 ## Installation
 
 ```bash
-pnpm add @velorate/core @velorate/fastify
+pnpm add @velorate/core @velorate/koa
 ```
 
 ```bash
-npm install @velorate/core @velorate/fastify
+npm install @velorate/core @velorate/koa
 ```
 
 ```bash
-yarn add @velorate/core @velorate/fastify
+yarn add @velorate/core @velorate/koa
 ```
 
 ---
@@ -37,34 +37,34 @@ yarn add @velorate/core @velorate/fastify
 ## Quick Start
 
 ```ts
-import Fastify from "fastify";
+import Koa from "koa";
 
 import {
   MemoryStore,
   FixedWindow,
 } from "@velorate/core";
 
-import { rateLimit } from "@velorate/fastify";
+import { rateLimit } from "@velorate/koa";
 
-const app = Fastify();
+const app = new Koa();
 
-await app.register(rateLimit, {
-  store: new MemoryStore(),
-  algorithm: new FixedWindow({
-    limit: 5,
-    window: 10_000,
-  }),
-});
+app.use(
+  rateLimit({
+    store: new MemoryStore(),
+    algorithm: new FixedWindow({
+      limit: 5,
+      window: 10_000,
+    }),
+  })
+);
 
-app.get("/", async () => {
-  return {
+app.use(async (ctx) => {
+  ctx.body = {
     message: "Hello Velorate 🚀",
   };
 });
 
-await app.listen({
-  port: 3000,
-});
+app.listen(3000);
 ```
 
 ---
@@ -74,7 +74,7 @@ await app.listen({
 Use `RedisStore` for production or when running multiple application instances.
 
 ```ts
-import Fastify from "fastify";
+import Koa from "koa";
 import { createClient } from "redis";
 
 import {
@@ -82,27 +82,27 @@ import {
   FixedWindow,
 } from "@velorate/core";
 
-import { rateLimit } from "@velorate/fastify";
+import { rateLimit } from "@velorate/koa";
 
 const client = createClient();
 
 await client.connect();
 
-const app = Fastify();
+const app = new Koa();
 
-await app.register(rateLimit, {
-  store: new RedisStore({
-    client,
-  }),
-  algorithm: new FixedWindow({
-    limit: 100,
-    window: 60_000,
-  }),
-});
+app.use(
+  rateLimit({
+    store: new RedisStore({
+      client,
+    }),
+    algorithm: new FixedWindow({
+      limit: 100,
+      window: 60_000,
+    }),
+  })
+);
 
-await app.listen({
-  port: 3000,
-});
+app.listen(3000);
 ```
 
 ---
