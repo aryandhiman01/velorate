@@ -1,0 +1,49 @@
+{
+    "name": "@velorate/koa",
+    "version": "0.1.0",
+    "type": "module",
+
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+
+    "files": [
+        "dist"
+    ],
+
+    "scripts": {
+
+        "build": "tsc -p tsconfig.json",
+
+        "typecheck": "tsc --noEmit",
+
+        "test": "vitest",
+
+        "test:run": "vitest run"
+
+    },
+
+    "dependencies": {
+
+        "@velorate/core": "workspace:*",
+
+        "koa": "^2.16.2"
+
+    },
+
+    "peerDependencies": {
+
+        "koa": "^2.0.0"
+
+    },
+
+    "devDependencies": {
+
+        "@types/koa": "^2.15.0",
+
+        "@types/node": "^26.1.1",
+
+        "vitest": "^4.1.10"
+
+    }
+
+}
