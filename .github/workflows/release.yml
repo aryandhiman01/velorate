@@ -6,32 +6,27 @@ on:
       - published
 
 jobs:
-  verify:
-
-    name: Verify Release
+  publish:
+    name: Publish Packages
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version:
-          - 20
-          - 22
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 22
+          registry-url: https://registry.npmjs.org/
           cache: pnpm
 
       - name: Install Dependencies
@@ -41,7 +36,9 @@ jobs:
         run: pnpm build
 
       - name: Run Tests
-        run: pnpm test --run
+        run: pnpm test:run
 
-      - name: Package Verification
-        run: pnpm pack
+      - name: Publish Packages
+        run: pnpm -r publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

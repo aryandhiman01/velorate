@@ -1,25 +1,20 @@
 {
   "name": "velorate",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Fast, flexible, and production-ready rate limiting for modern applications.",
   "license": "MIT",
   "author": "Aryan Dhiman",
   "type": "module",
-
   "packageManager": "pnpm@11.10.0",
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aryandhiman01/velorate.git"
   },
-
   "homepage": "https://github.com/aryandhiman01/velorate#readme",
-
   "bugs": {
     "url": "https://github.com/aryandhiman01/velorate/issues"
   },
-
   "keywords": [
     "rate-limit",
     "rate-limiter",
@@ -34,30 +29,27 @@
     "nodejs",
     "backend"
   ],
-
   "engines": {
     "node": ">=18"
   },
-
   "scripts": {
-    "build": "turbo run build",
+  "build": "turbo run build",
+  "dev": "turbo run dev",
 
-    "dev": "turbo run dev",
+  "test": "vitest",
+  "test:run": "vitest run",
+  "coverage": "vitest run --coverage",
 
-    "test": "vitest",
+  "lint": "turbo run lint",
+  "clean": "turbo run clean",
+  "typecheck": "turbo run typecheck",
 
-    "test:run": "vitest run",
-
-    "coverage": "vitest run --coverage",
-
-    "lint": "turbo run lint",
-
-    "clean": "turbo run clean",
-
-    "typecheck": "turbo run typecheck"
-  },
-
+  "changeset": "changeset",
+  "version-packages": "changeset version",
+  "release": "changeset publish"
+},
   "devDependencies": {
+    "@changesets/cli": "^2.31.1",
     "@types/node": "^26.1.1",
     "@vitest/coverage-v8": "^4.1.10",
     "tsup": "^8.5.1",
