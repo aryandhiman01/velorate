@@ -1,0 +1,23 @@
+{
+  "name": "@velorate/benchmarks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "bench": "tsx velorate/benchmark.ts",
+    "bench:all": "tsx shared/run-all.ts"
+  },
+  "dependencies": {
+    "@velorate/core": "workspace:*",
+    "autocannon": "^8.0.0",
+    "express-rate-limit": "^8.1.0",
+    "rate-limiter-flexible": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/autocannon": "^7.12.7",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.1",
+    "express": "^5.2.1",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3"
+  }
+}
