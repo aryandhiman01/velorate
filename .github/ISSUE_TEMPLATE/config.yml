@@ -2,5 +2,5 @@ blank_issues_enabled: false
 
 contact_links:
   - name: Documentation
-    url: https://github.com/<your-username>/velorate/tree/main/docs
+    url: https://github.com/aryandhiman01/velorate/tree/main/docs
     about: Read the documentation before opening an issue.

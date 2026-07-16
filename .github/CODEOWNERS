@@ -1,0 +1,31 @@
+# Default owner
+* @aryandhiman01
+
+# Core
+/packages/core/ @aryandhiman01
+
+# Framework adapters
+/packages/express/ @aryandhiman01
+/packages/fastify/ @aryandhiman01
+/packages/koa/ @aryandhiman01
+/packages/hono/ @aryandhiman01
+/packages/nestjs/ @aryandhiman01
+
+# Examples
+/examples/ @aryandhiman01
+
+# Documentation
+/docs/ @aryandhiman01
+
+# Benchmarks
+/benchmarks/ @aryandhiman01
+
+# GitHub configuration
+/.github/ @aryandhiman01
+
+# Root configuration
+README.md @aryandhiman01
+LICENSE.md @aryandhiman01
+package.json @aryandhiman01
+pnpm-workspace.yaml @aryandhiman01
+turbo.json @aryandhiman01
