@@ -1,0 +1,19 @@
+name: Question
+description: Ask a question about Velorate.
+title: "[Question]: "
+labels:
+  - question
+
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      placeholder: Ask your question here.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
