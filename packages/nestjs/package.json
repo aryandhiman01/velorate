@@ -1,36 +1,82 @@
 {
-    "name": "@velorate/nestjs",
-    "version": "0.1.0",
-    "type": "module",
+  "name": "@velorate/nestjs",
+  "version": "0.1.0",
+  "description": "NestJS integration for Velorate.",
+  "license": "MIT",
+  "author": "Aryan Dhiman",
+  "type": "module",
 
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
 
-    "files": [
-        "dist"
-    ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
 
-    "scripts": {
-        "build": "tsc -p tsconfig.json",
-        "typecheck": "tsc --noEmit",
-        "test": "vitest",
-        "test:run": "vitest run"
-    },
+  "sideEffects": false,
 
-    "dependencies": {
-        "@nestjs/common": "^11.1.6",
-        "@nestjs/core": "^11.1.6",
-        "@velorate/core": "workspace:*",
-        "reflect-metadata": "^0.2.2"
-    },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryandhiman01/velorate.git",
+    "directory": "packages/nestjs"
+  },
 
-    "peerDependencies": {
-        "@nestjs/common": "^11.0.0",
-        "@nestjs/core": "^11.0.0"
-    },
+  "homepage": "https://github.com/aryandhiman01/velorate#readme",
 
-    "devDependencies": {
-        "@types/node": "^24.3.0",
-        "vitest": "^4.1.10"
-    }
+  "bugs": {
+    "url": "https://github.com/aryandhiman01/velorate/issues"
+  },
+
+  "keywords": [
+    "nestjs",
+    "rate-limit",
+    "rate-limiter",
+    "middleware",
+    "guard",
+    "typescript",
+    "redis",
+    "nodejs",
+    "http",
+    "backend",
+    "api",
+    "throttling",
+    "fixed-window",
+    "sliding-window",
+    "token-bucket",
+    "leaky-bucket"
+  ],
+
+  "engines": {
+    "node": ">=18"
+  },
+
+  "publishConfig": {
+    "access": "public"
+  },
+
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run"
+  },
+
+  "dependencies": {
+    "@velorate/core": "workspace:*",
+    "reflect-metadata": "^0.2.2"
+  },
+
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/core": "^11.0.0"
+  },
+
+  "devDependencies": {
+    "@nestjs/common": "^11.1.6",
+    "@nestjs/core": "^11.1.6",
+    "@types/node": "^24.3.0",
+    "vitest": "^4.1.10"
+  }
 }
