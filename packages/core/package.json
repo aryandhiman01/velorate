@@ -1,8 +1,9 @@
 {
   "name": "@velorate/core",
   "version": "0.0.0",
-  "description": "Core engine of Velorate.",
+  "description": "Core rate limiting engine for Velorate.",
   "license": "MIT",
+  "author": "Aryan Dhiman",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -13,8 +14,48 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryandhiman01/velorate.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/aryandhiman01/velorate#readme",
+  "bugs": {
+    "url": "https://github.com/aryandhiman01/velorate/issues"
+  },
+  "keywords": [
+  "rate-limit",
+  "rate-limiter",
+  "api",
+  "middleware",
+  "typescript",
+  "redis",
+  "express",
+  "fastify",
+  "koa",
+  "hono",
+  "nestjs",
+  "nodejs",
+  "http",
+  "backend",
+  "server",
+  "throttling",
+  "fixed-window",
+  "sliding-window",
+  "token-bucket",
+  "leaky-bucket"
+],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts",
     "dev": "tsup src/index.ts --watch",
