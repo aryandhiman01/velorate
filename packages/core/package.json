@@ -1,6 +1,6 @@
 {
   "name": "@velorate/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Core rate limiting engine for Velorate.",
   "license": "MIT",
   "author": "Aryan Dhiman",
