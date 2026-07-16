@@ -46,14 +46,14 @@ Velorate is a framework-agnostic rate limiting library for Node.js designed to p
 
 ## Packages
 
-| Package             | Description               |
-| ------------------- | ------------------------- |
-| `@velorate/core`    | Core rate limiting engine |
-| `@velorate/express` | Express adapter           |
-| `@velorate/fastify` | Fastify adapter           |
-| `@velorate/koa`     | Koa adapter               |
-| `@velorate/hono`    | Hono adapter              |
-| `@velorate/nestjs`  | NestJS adapter            |
+| Package | Description |
+|---------|-------------|
+| [`@velorate/core`](./packages/core) | Core rate limiting engine |
+| [`@velorate/express`](./packages/express) | Express adapter |
+| [`@velorate/fastify`](./packages/fastify) | Fastify adapter |
+| [`@velorate/koa`](./packages/koa) | Koa adapter |
+| [`@velorate/hono`](./packages/hono) | Hono adapter |
+| [`@velorate/nestjs`](./packages/nestjs) | NestJS adapter |
 
 ---
 
@@ -110,6 +110,51 @@ const app = express();
 app.use(
   rateLimit({
     store: new MemoryStore(),
+    algorithm: new FixedWindow({
+      limit: 100,
+      window: 60_000,
+    }),
+  })
+);
+
+app.get("/", (_, res) => {
+  res.json({
+    message: "Hello Velorate 🚀",
+  });
+});
+
+app.listen(3000);
+```
+
+---
+
+
+## Using Redis
+
+Use `RedisStore` for production deployments or when running multiple application instances.
+
+```ts
+import express from "express";
+import { createClient } from "redis";
+
+import {
+  RedisStore,
+  FixedWindow,
+} from "@velorate/core";
+
+import { rateLimit } from "@velorate/express";
+
+const client = createClient();
+
+await client.connect();
+
+const app = express();
+
+app.use(
+  rateLimit({
+    store: new RedisStore({
+      client,
+    }),
     algorithm: new FixedWindow({
       limit: 100,
       window: 60_000,
