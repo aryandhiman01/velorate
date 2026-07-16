@@ -1,0 +1,30 @@
+{
+    "name": "velorate-hono-example",
+    "private": true,
+    "type": "module",
+
+    "scripts": {
+
+        "dev": "tsx src/index.ts"
+
+    },
+
+    "dependencies": {
+
+        "@velorate/core": "workspace:*",
+
+        "@velorate/hono": "workspace:*",
+
+        "hono": "^4.9.7",
+
+        "@hono/node-server": "^1.19.5"
+
+    },
+
+    "devDependencies": {
+
+        "tsx": "^4.23.0"
+
+    }
+
+}

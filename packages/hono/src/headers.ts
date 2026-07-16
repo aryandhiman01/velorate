@@ -9,20 +9,31 @@ export function setRateLimitHeaders(
     decision: RateLimitDecision,
 
     limit: number
-    
+
 ): void {
-    c.header(
-        "x-RateLimit-Limit",
-        String(limit)
-    );
 
     c.header(
+
         "X-RateLimit-Limit",
-        String(decision.remaining)
+
+        String(limit)
+
     );
 
     c.header(
-        "Retry-After",
-        String(decision.retryAfter ?? 0)
+
+        "X-RateLimit-Remaining",
+
+        String(decision.remaining)
+
     );
+
+    c.header(
+
+        "Retry-After",
+
+        String(decision.retryAfter ?? 0)
+
+    );
+
 }
