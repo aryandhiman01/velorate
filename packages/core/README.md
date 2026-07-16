@@ -7,8 +7,8 @@ A fast, flexible, and production-ready rate limiting engine for Node.js.
 Framework-independent core with multiple algorithms, pluggable storage backends, and TypeScript support.
 
 [![npm version](https://img.shields.io/npm/v/%40velorate%2Fcore)](https://www.npmjs.com/package/@velorate/core)
-[![npm downloads](https://img.shields.io/npm/dm/%40velorate%2Fcore)](https://www.npmjs.com/package/@velorate/core)
 [![License](https://img.shields.io/npm/l/%40velorate%2Fcore)](https://github.com/aryandhiman01/velorate/blob/main/LICENSE.md)
+[![ESM](https://img.shields.io/badge/ESM-Compatible-blue)]()
 [![Node.js](https://img.shields.io/node/v/%40velorate%2Fcore)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6)](https://www.typescriptlang.org/)
 
