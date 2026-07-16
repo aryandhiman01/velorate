@@ -1,0 +1,28 @@
+{
+    "extends": "../../tsconfig.base.json",
+
+    "compilerOptions": {
+
+        "rootDir": "./src",
+
+        "outDir": "./dist",
+
+        "experimentalDecorators": true,
+
+        "emitDecoratorMetadata": true,
+
+        "types": [
+
+            "vitest/globals"
+
+        ]
+
+    },
+
+    "include": [
+
+        "src"
+
+    ]
+
+}

@@ -1,0 +1,45 @@
+{
+    "name": "@velorate/nestjs",
+    "version": "0.1.0",
+    "type": "module",
+
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+
+    "files": [
+        "dist"
+    ],
+
+    "scripts": {
+
+        "build": "tsc -p tsconfig.json",
+
+        "typecheck": "tsc --noEmit",
+
+        "test": "vitest",
+
+        "test:run": "vitest run"
+
+    },
+
+    "dependencies": {
+
+        "@nestjs/common": "^11.1.6",
+
+        "@velorate/core": "workspace:*"
+
+    },
+
+    "peerDependencies": {
+        "@nestjs/common": "^11.0.0",
+        "express": "^5.0.0"
+    },
+
+    "devDependencies": {
+        "@types/node": "^24.3.0",
+        "@types/express": "^5.0.3",
+        "express": "^5.1.0",
+        "vitest": "^4.1.10"
+}
+
+}
