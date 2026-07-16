@@ -1,47 +1,78 @@
 {
-    "name": "@velorate/hono",
-    "version": "0.1.0",
-    "type": "module",
+  "name": "@velorate/hono",
+  "version": "0.1.0",
+  "description": "Hono middleware for Velorate.",
+  "license": "MIT",
+  "author": "Aryan Dhiman",
+  "type": "module",
 
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
 
-    "files": [
-        "dist"
-    ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
 
-    "scripts": {
+  "sideEffects": false,
 
-        "build": "tsc -p tsconfig.json",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryandhiman01/velorate.git",
+    "directory": "packages/hono"
+  },
 
-        "typecheck": "tsc --noEmit",
+  "homepage": "https://github.com/aryandhiman01/velorate#readme",
 
-        "test": "vitest",
+  "bugs": {
+    "url": "https://github.com/aryandhiman01/velorate/issues"
+  },
 
-        "test:run": "vitest run"
+  "keywords": [
+    "hono",
+    "middleware",
+    "rate-limit",
+    "rate-limiter",
+    "typescript",
+    "redis",
+    "nodejs",
+    "http",
+    "backend",
+    "api",
+    "throttling",
+    "fixed-window",
+    "sliding-window",
+    "token-bucket",
+    "leaky-bucket"
+  ],
 
-    },
+  "engines": {
+    "node": ">=18"
+  },
 
-    "dependencies": {
+  "publishConfig": {
+    "access": "public"
+  },
 
-        "@velorate/core": "workspace:*",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run"
+  },
 
-        "hono": "^4.9.7"
+  "dependencies": {
+    "@velorate/core": "workspace:*"
+  },
 
-    },
+  "peerDependencies": {
+    "hono": "^4.0.0"
+  },
 
-    "peerDependencies": {
-
-        "hono": "^4.0.0"
-
-    },
-
-    "devDependencies": {
-
-        "@types/node": "^26.1.1",
-
-        "vitest": "^4.1.10"
-
-    }
-
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "hono": "^4.9.7",
+    "vitest": "^4.1.10"
+  }
 }
