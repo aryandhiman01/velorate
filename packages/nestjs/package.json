@@ -11,35 +11,26 @@
     ],
 
     "scripts": {
-
         "build": "tsc -p tsconfig.json",
-
         "typecheck": "tsc --noEmit",
-
         "test": "vitest",
-
         "test:run": "vitest run"
-
     },
 
     "dependencies": {
-
         "@nestjs/common": "^11.1.6",
-
-        "@velorate/core": "workspace:*"
-
+        "@nestjs/core": "^11.1.6",
+        "@velorate/core": "workspace:*",
+        "reflect-metadata": "^0.2.2"
     },
 
     "peerDependencies": {
         "@nestjs/common": "^11.0.0",
-        "express": "^5.0.0"
+        "@nestjs/core": "^11.0.0"
     },
 
     "devDependencies": {
         "@types/node": "^24.3.0",
-        "@types/express": "^5.0.3",
-        "express": "^5.1.0",
         "vitest": "^4.1.10"
-}
-
+    }
 }

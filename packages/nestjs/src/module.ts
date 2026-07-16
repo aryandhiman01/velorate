@@ -2,19 +2,27 @@ import {
 
     DynamicModule,
 
-    MiddlewareConsumer,
-
-    Module,
-
-    NestModule
+    Module
 
 } from "@nestjs/common";
 
 import {
 
-    RateLimitMiddleware
+    RATE_LIMIT_OPTIONS
 
-} from "./middleware.js";
+} from "./constants.js";
+
+import {
+
+    RateLimitService
+
+} from "./service.js";
+
+import {
+
+    RateLimitGuard
+
+} from "./guard.js";
 
 import type {
 
@@ -23,7 +31,7 @@ import type {
 } from "./interfaces.js";
 
 @Module({})
-export class RateLimitModule implements NestModule {
+export class RateLimitModule {
 
     static forRoot(
 
@@ -33,59 +41,37 @@ export class RateLimitModule implements NestModule {
 
         return {
 
+            global: true,
+
             module: RateLimitModule,
 
             providers: [
 
                 {
 
-                    provide: "RATE_LIMIT_OPTIONS",
+                    provide:
+
+                        RATE_LIMIT_OPTIONS,
 
                     useValue: options
 
                 },
 
-                {
+                RateLimitService,
 
-                    provide: RateLimitMiddleware,
-
-                    useFactory: () =>
-
-                        new RateLimitMiddleware(
-
-                            options
-
-                        )
-
-                }
+                RateLimitGuard
 
             ],
 
             exports: [
 
-                RateLimitMiddleware
+                RateLimitService,
+
+                RateLimitGuard
 
             ]
 
         };
-
-    }
-
-    configure(
-
-        consumer: MiddlewareConsumer
-
-    ): void {
-
-        consumer
-
-            .apply(
-
-                RateLimitMiddleware
-
-            )
-
-            .forRoutes("*");
 
     }
 
