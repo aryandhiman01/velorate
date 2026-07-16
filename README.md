@@ -44,6 +44,17 @@ Velorate is a framework-agnostic rate limiting library for Node.js designed to p
 
 ---
 
+## Why Velorate?
+
+- Framework-independent architecture
+- Multiple interchangeable algorithms
+- Pluggable storage engines
+- Native adapters
+- First-class TypeScript support
+- Lightweight and production-ready
+
+---
+
 ## Packages
 
 | Package | Description |
