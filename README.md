@@ -374,7 +374,7 @@ MIT
 
 <div align="center">
 
-Built with TypeScript.
+Built with ❤️ using TypeScript.
 
 If Velorate helps your project, consider giving the repository a ⭐.
 
