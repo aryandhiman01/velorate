@@ -23,10 +23,7 @@ import type {
 } from "./interfaces.js";
 
 @Module({})
-
-export class RateLimitModule
-
-    implements NestModule {
+export class RateLimitModule implements NestModule {
 
     static forRoot(
 
@@ -42,9 +39,7 @@ export class RateLimitModule
 
                 {
 
-                    provide:
-
-                        "RATE_LIMIT_OPTIONS",
+                    provide: "RATE_LIMIT_OPTIONS",
 
                     useValue: options
 
@@ -52,9 +47,7 @@ export class RateLimitModule
 
                 {
 
-                    provide:
-
-                        RateLimitMiddleware,
+                    provide: RateLimitMiddleware,
 
                     useFactory: () =>
 
@@ -82,7 +75,7 @@ export class RateLimitModule
 
         consumer: MiddlewareConsumer
 
-    ) {
+    ): void {
 
         consumer
 
