@@ -11,50 +11,36 @@ on:
 
 jobs:
   build-and-test:
+    name: Build & Test (Node ${{ matrix.node-version }})
 
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
 
       matrix:
-
         node-version:
-
-          - 20
           - 22
+          - 24
 
     steps:
-
       - name: Checkout Repository
-
         uses: actions/checkout@v4
 
       - name: Setup pnpm
-
         uses: pnpm/action-setup@v4
 
-        with:
-
-          version: 10
-
       - name: Setup Node.js
-
         uses: actions/setup-node@v4
-
         with:
-
           node-version: ${{ matrix.node-version }}
-
           cache: pnpm
 
       - name: Install Dependencies
-
         run: pnpm install --frozen-lockfile
 
       - name: Build Packages
-
         run: pnpm build
 
       - name: Run Tests
-
-        run: pnpm test --run
+        run: pnpm test:run
