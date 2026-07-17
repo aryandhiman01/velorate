@@ -390,8 +390,8 @@ importers:
   packages/express:
     dependencies:
       '@velorate/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: ^0.1.2
+        version: 0.1.2
     devDependencies:
       '@types/express':
         specifier: ^5.0.6
@@ -412,8 +412,8 @@ importers:
   packages/fastify:
     dependencies:
       '@velorate/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: ^0.1.2
+        version: 0.1.2
       fastify-plugin:
         specifier: ^6.0.0
         version: 6.0.0
@@ -434,8 +434,8 @@ importers:
   packages/hono:
     dependencies:
       '@velorate/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: ^0.1.2
+        version: 0.1.2
     devDependencies:
       '@types/node':
         specifier: ^26.1.1
@@ -450,8 +450,8 @@ importers:
   packages/koa:
     dependencies:
       '@velorate/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: ^0.1.2
+        version: 0.1.2
     devDependencies:
       '@types/koa':
         specifier: ^2.15.0
@@ -475,8 +475,8 @@ importers:
   packages/nestjs:
     dependencies:
       '@velorate/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: ^0.1.2
+        version: 0.1.2
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -1396,6 +1396,10 @@ packages:
 
   '@types/supertest@7.2.0':
     resolution: {integrity: sha512-uh2Lv57xvggst6lCqNdFAmDSvoMG7M/HDtX4iUCquxQ5EGPtaPM5PL5Hmi7LCvOG8db7YaCPNJEeoI8s/WzIQw==}
+
+  '@velorate/core@0.1.2':
+    resolution: {integrity: sha512-OYUvswu8sQM9cs6mrFuG56QdCq1h86W0yrcuRELaZFnPnVXsjaWsjQu2FDSmHHNShLo7brw2yVYkT4bZRDIAUg==}
+    engines: {node: '>=18'}
 
   '@vitest/coverage-v8@4.1.10':
     resolution: {integrity: sha512-IM49HmthevbgAO4anp1hwtoT9wYe59w0LR00gr+eagHE+ZJ5lK4sLPeO0ubgoJcwLk6dehU3R24N+FbEEKDc8g==}
@@ -3732,6 +3736,12 @@ snapshots:
     dependencies:
       '@types/methods': 1.1.4
       '@types/superagent': 8.1.10
+
+  '@velorate/core@0.1.2':
+    dependencies:
+      ioredis: 5.11.1
+    transitivePeerDependencies:
+      - supports-color
 
   '@vitest/coverage-v8@4.1.10(vitest@4.1.10)':
     dependencies:

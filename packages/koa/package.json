@@ -1,34 +1,27 @@
 {
   "name": "@velorate/koa",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Koa middleware for Velorate.",
   "license": "MIT",
   "author": "Aryan Dhiman",
   "type": "module",
-
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-
   "files": [
     "dist",
     "README.md",
     "LICENSE"
   ],
-
   "sideEffects": false,
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aryandhiman01/velorate.git",
     "directory": "packages/koa"
   },
-
   "homepage": "https://github.com/aryandhiman01/velorate#readme",
-
   "bugs": {
     "url": "https://github.com/aryandhiman01/velorate/issues"
   },
-
   "keywords": [
     "koa",
     "middleware",
@@ -45,30 +38,24 @@
     "token-bucket",
     "leaky-bucket"
   ],
-
   "engines": {
     "node": ">=18"
   },
-
   "publishConfig": {
     "access": "public"
   },
-
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run"
   },
-
   "dependencies": {
-    "@velorate/core": "workspace:*"
+    "@velorate/core": "^0.1.2"
   },
-
   "peerDependencies": {
     "koa": "^2.0.0"
   },
-
   "devDependencies": {
     "koa": "^2.16.2",
     "@types/koa": "^2.15.0",

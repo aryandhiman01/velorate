@@ -1,34 +1,27 @@
 {
   "name": "@velorate/express",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Express middleware for Velorate.",
   "license": "MIT",
   "author": "Aryan Dhiman",
   "type": "module",
-
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-
   "files": [
     "dist",
     "README.md",
     "LICENSE"
   ],
-
   "sideEffects": false,
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aryandhiman01/velorate.git",
     "directory": "packages/express"
   },
-
   "homepage": "https://github.com/aryandhiman01/velorate#readme",
-
   "bugs": {
     "url": "https://github.com/aryandhiman01/velorate/issues"
   },
-
   "keywords": [
     "express",
     "middleware",
@@ -40,30 +33,24 @@
     "http",
     "backend"
   ],
-
   "engines": {
     "node": ">=18"
   },
-
   "publishConfig": {
     "access": "public"
   },
-
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run"
   },
-
   "dependencies": {
-    "@velorate/core": "workspace:*"
+    "@velorate/core": "^0.1.2"
   },
-
   "peerDependencies": {
     "express": "^5.0.0"
   },
-
   "devDependencies": {
     "express": "^5.2.1",
     "@types/express": "^5.0.6",

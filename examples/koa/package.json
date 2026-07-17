@@ -2,29 +2,16 @@
     "name": "velorate-koa-example",
     "private": true,
     "type": "module",
-
     "scripts": {
-
         "dev": "tsx src/index.ts"
-
     },
-
     "dependencies": {
-
         "@velorate/core": "workspace:*",
-
         "@velorate/koa": "workspace:*",
-
         "koa": "^2.16.2"
-
     },
-
     "devDependencies": {
-
         "@types/koa": "^2.15.0",
-
         "tsx": "^4.23.0"
-
     }
-
 }

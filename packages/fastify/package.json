@@ -1,34 +1,27 @@
 {
   "name": "@velorate/fastify",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Fastify plugin for Velorate.",
   "license": "MIT",
   "author": "Aryan Dhiman",
   "type": "module",
-
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-
   "files": [
     "dist",
     "README.md",
     "LICENSE"
   ],
-
   "sideEffects": false,
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aryandhiman01/velorate.git",
     "directory": "packages/fastify"
   },
-
   "homepage": "https://github.com/aryandhiman01/velorate#readme",
-
   "bugs": {
     "url": "https://github.com/aryandhiman01/velorate/issues"
   },
-
   "keywords": [
     "fastify",
     "plugin",
@@ -46,31 +39,25 @@
     "token-bucket",
     "leaky-bucket"
   ],
-
   "engines": {
     "node": ">=18"
   },
-
   "publishConfig": {
     "access": "public"
   },
-
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run"
   },
-
   "dependencies": {
-    "@velorate/core": "workspace:*",
+    "@velorate/core": "^0.1.2",
     "fastify-plugin": "^6.0.0"
   },
-
   "peerDependencies": {
     "fastify": "^5.0.0"
   },
-
   "devDependencies": {
     "@types/node": "^26.1.1",
     "fastify": "^5.6.0",
